@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Starter</string>
+
+    <string name="loading_default">Loading&#8230;</string>
+</resources>
