@@ -2,6 +2,7 @@ package eu.vanyamihova.starter.data.net.base;
 
 import javax.inject.Inject;
 
+import eu.vanyamihova.starter.AndroidApplication;
 import eu.vanyamihova.starter.BuildConfig;
 import eu.vanyamihova.starter.data.exception.NetworkConnectionException;
 import eu.vanyamihova.starter.data.executor.ThreadPoolExecutor;
@@ -28,6 +29,7 @@ public abstract class BaseQuery<S, L extends BaseQueryCompleteListener> {
     protected NetworkUtils networkUtils;
 
     protected BaseQuery(String baseUrl, L listener) {
+        AndroidApplication.inject(this);
         this.mBaseUrl = baseUrl;
         this.mListener = listener;
         this.mService = (S) configRetrofit().create(getServiceClass());

@@ -18,6 +18,7 @@ public final class AndroidApplication extends Application {
 
         setupLeakcanary();
         setupRoom();
+        setupDagger();
     }
 
     @Override
@@ -41,6 +42,17 @@ public final class AndroidApplication extends Application {
 
     private void setupRoom() {
         AppDatabaseManager.create(getApplicationContext());
+    }
+
+//    Setup for Dagger 1
+    private static DaggerConfiguration mDaggerConfiguration;
+
+    private void setupDagger() {
+        mDaggerConfiguration = new DaggerConfiguration(this);
+    }
+
+    public static void inject(Object object) {
+        mDaggerConfiguration.inject(object);
     }
 
 }

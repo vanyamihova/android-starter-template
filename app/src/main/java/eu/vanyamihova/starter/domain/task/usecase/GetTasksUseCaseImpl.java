@@ -2,15 +2,13 @@ package eu.vanyamihova.starter.domain.task.usecase;
 
 import java.util.List;
 
-import eu.vanyamihova.starter.data.datastore.task.TaskRepositoryImpl;
 import eu.vanyamihova.starter.domain.task.Task;
-import eu.vanyamihova.starter.domain.task.TaskRepository;
 
 /**
  * Created by Vanya Mihova on 12.01.2018
  */
 
-public class GetTasksUseCaseImpl implements GetTasksUseCase {
+public final class GetTasksUseCaseImpl extends BaseTaskUseCase implements GetTasksUseCase {
 
     private static GetTasksUseCase sInstance = new GetTasksUseCaseImpl();
 
@@ -18,15 +16,8 @@ public class GetTasksUseCaseImpl implements GetTasksUseCase {
         return sInstance;
     }
 
-    private TaskRepository mTaskRepository;
-
-//    @Inject
-    GetTasksUseCaseImpl() {
-        this.mTaskRepository = TaskRepositoryImpl.getInstance();
-    }
-
     @Override
     public void execute(Void parameter, Callback<List<Task>> callback) {
-        mTaskRepository.getTasks(callback);
+        taskRepository.getTasks(callback);
     }
 }

@@ -6,10 +6,12 @@ import android.arch.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import eu.vanyamihova.starter.AndroidApplication;
 import eu.vanyamihova.starter.domain.base.interactor.UseCase;
 import eu.vanyamihova.starter.domain.task.Task;
 import eu.vanyamihova.starter.domain.task.usecase.GetTasksUseCase;
-import eu.vanyamihova.starter.domain.task.usecase.GetTasksUseCaseImpl;
 import eu.vanyamihova.starter.presentation.model.task.TaskViewMapper;
 import eu.vanyamihova.starter.presentation.model.task.TaskViewModel;
 
@@ -17,13 +19,15 @@ import eu.vanyamihova.starter.presentation.model.task.TaskViewModel;
  * Created by Vanya Mihova on 18.01.2018
  */
 
-final class MainPresenter implements MainContract.Presenter, UseCase.Callback<List<Task>> {
+public final class MainPresenter implements MainContract.Presenter, UseCase.Callback<List<Task>> {
 
     private MutableLiveData<List<TaskViewModel>> mLiveData;
     private MainContract.View mView;
-    private GetTasksUseCase getTasksUseCase = GetTasksUseCaseImpl.getInstance();
+    @Inject
+    GetTasksUseCase getTasksUseCase;
 
     MainPresenter(MainContract.View view) {
+        AndroidApplication.inject(this);
         this.mView = view;
         this.mLiveData = new MutableLiveData<>();
     }
