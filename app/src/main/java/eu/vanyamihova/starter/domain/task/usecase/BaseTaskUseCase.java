@@ -2,7 +2,7 @@ package eu.vanyamihova.starter.domain.task.usecase;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.AndroidApplication;
+import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.domain.task.TaskRepository;
 
 /**

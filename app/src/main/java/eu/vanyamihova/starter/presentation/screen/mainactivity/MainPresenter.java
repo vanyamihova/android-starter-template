@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.AndroidApplication;
+import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.domain.base.interactor.UseCase;
 import eu.vanyamihova.starter.domain.task.Task;
 import eu.vanyamihova.starter.domain.task.usecase.GetTasksUseCase;

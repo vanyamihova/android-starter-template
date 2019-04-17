@@ -2,8 +2,7 @@ package eu.vanyamihova.starter.presentation.screen.splashactivity;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.AndroidApplication;
-import eu.vanyamihova.starter.data.net.sync.SyncRepositoryImpl;
+import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.domain.sync.SyncRepository;
 
 /**

@@ -1,4 +1,4 @@
-package eu.vanyamihova.starter;
+package eu.vanyamihova.starter.application;
 
 import javax.inject.Singleton;
 

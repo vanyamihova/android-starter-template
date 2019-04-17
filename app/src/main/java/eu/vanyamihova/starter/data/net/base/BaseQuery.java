@@ -2,7 +2,7 @@ package eu.vanyamihova.starter.data.net.base;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.AndroidApplication;
+import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.BuildConfig;
 import eu.vanyamihova.starter.data.exception.NetworkConnectionException;
 import eu.vanyamihova.starter.data.executor.ThreadPoolExecutor;

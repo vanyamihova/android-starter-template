@@ -1,9 +1,10 @@
-package eu.vanyamihova.starter;
+package eu.vanyamihova.starter.application;
 
 import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 
+import eu.vanyamihova.starter.BuildConfig;
 import eu.vanyamihova.starter.data.datastore.AppDatabaseManager;
 
 /**

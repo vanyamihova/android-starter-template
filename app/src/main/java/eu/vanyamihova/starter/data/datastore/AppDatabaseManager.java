@@ -3,7 +3,7 @@ package eu.vanyamihova.starter.data.datastore;
 import androidx.room.Room;
 import android.content.Context;
 
-import static eu.vanyamihova.starter.AppConfiguration.DATABASE_NAME;
+import static eu.vanyamihova.starter.application.AppConfiguration.DATABASE_NAME;
 
 /**
  * This manager is caring for the instance of the database. It is created when the application has
