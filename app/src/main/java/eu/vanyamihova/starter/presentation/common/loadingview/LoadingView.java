@@ -1,7 +1,7 @@
 package eu.vanyamihova.starter.presentation.common.loadingview;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;

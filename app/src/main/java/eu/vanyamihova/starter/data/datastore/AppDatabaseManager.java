@@ -1,6 +1,6 @@
 package eu.vanyamihova.starter.data.datastore;
 
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
 
 import static eu.vanyamihova.starter.AppConfiguration.DATABASE_NAME;

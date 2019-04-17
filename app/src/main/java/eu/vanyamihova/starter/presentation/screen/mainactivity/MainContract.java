@@ -1,6 +1,6 @@
 package eu.vanyamihova.starter.presentation.screen.mainactivity;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 

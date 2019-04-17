@@ -1,7 +1,7 @@
 package eu.vanyamihova.starter.data.datastore;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import eu.vanyamihova.starter.data.datastore.task.TaskDao;
 import eu.vanyamihova.starter.data.datastore.task.TaskEntity;

@@ -1,7 +1,7 @@
 package eu.vanyamihova.starter.presentation.screen.splashactivity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import eu.vanyamihova.starter.R;
 import eu.vanyamihova.starter.presentation.base.BaseActivity;

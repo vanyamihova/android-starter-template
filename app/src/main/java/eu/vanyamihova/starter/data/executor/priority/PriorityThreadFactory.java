@@ -1,6 +1,6 @@
 package eu.vanyamihova.starter.data.executor.priority;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.concurrent.ThreadFactory;
 

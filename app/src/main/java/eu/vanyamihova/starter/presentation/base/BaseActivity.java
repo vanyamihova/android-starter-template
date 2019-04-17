@@ -1,8 +1,8 @@
 package eu.vanyamihova.starter.presentation.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import eu.vanyamihova.starter.R;
