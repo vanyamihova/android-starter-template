@@ -2,18 +2,22 @@ package eu.vanyamihova.starter.domain.task.usecase;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import eu.vanyamihova.starter.domain.task.Task;
+import eu.vanyamihova.starter.domain.task.TaskRepository;
 
 /**
  * Created by Vanya Mihova on 12.01.2018
  */
 
-public final class GetTasksUseCaseImpl extends BaseTaskUseCase implements GetTasksUseCase {
+public final class GetTasksUseCaseImpl implements GetTasksUseCase {
 
-    private static GetTasksUseCase sInstance = new GetTasksUseCaseImpl();
+    private TaskRepository taskRepository;
 
-    public static GetTasksUseCase getInstance() {
-        return sInstance;
+    @Inject
+    public GetTasksUseCaseImpl(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
     @Override

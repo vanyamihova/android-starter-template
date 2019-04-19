@@ -1,7 +1,6 @@
-package eu.vanyamihova.starter.presentation.screen.splashactivity;
+package eu.vanyamihova.starter.presentation.app.splash;
 
-import android.os.Bundle;
-import androidx.annotation.Nullable;
+import javax.inject.Inject;
 
 import eu.vanyamihova.starter.R;
 import eu.vanyamihova.starter.presentation.base.BaseActivity;
@@ -10,7 +9,10 @@ import eu.vanyamihova.starter.presentation.base.BaseActivity;
  * Created by Vanya Mihova on 19.01.2018
  */
 
-public class SplashActivity extends BaseActivity implements SplashContract.View {
+public final class SplashActivity extends BaseActivity implements SplashContract.View {
+
+    @Inject
+    SplashContract.Presenter splashPresenter;
 
     @Override
     public int injectLayout() {
@@ -18,9 +20,9 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        new SplashPresenter(this);
+    protected void onCreateView() {
+        splashPresenter.load()
+                .observe(this, o -> finishLoading());
     }
 
     @Override

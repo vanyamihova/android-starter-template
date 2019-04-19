@@ -2,7 +2,6 @@ package eu.vanyamihova.starter.domain.task.usecase;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.domain.task.TaskRepository;
 
 /**
@@ -15,7 +14,6 @@ public abstract class BaseTaskUseCase {
     protected TaskRepository taskRepository;
 
     BaseTaskUseCase() {
-        AndroidApplication.inject(this);
     }
 
 }

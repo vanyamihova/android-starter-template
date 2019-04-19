@@ -1,7 +1,7 @@
 # Overview
 
 This is starter template for writing Android apps using **Clean architecture**. It supports 
-**API 16 and above**.
+**API 21 and above**.
 
 ## Clean architecture
 
@@ -52,6 +52,6 @@ belongs from the **data-layer**.
 [GSON]: <https://github.com/google/gson>
 [LiveData]: <https://developer.android.com/topic/libraries/architecture/livedata.html>
 [ViewModel]: <https://developer.android.com/topic/libraries/architecture/viewmodel.html>
-[Dagger 2]: <https://google.github.io/dagger/android.html>
+[Dagger 2]: <https://github.com/google/dagger>
 [Mockito]: <http://site.mockito.org/>
 [JUnit]: <https://github.com/junit-team/junit/wiki/Download-and-Install>

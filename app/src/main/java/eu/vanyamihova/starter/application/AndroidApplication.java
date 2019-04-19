@@ -1,9 +1,14 @@
 package eu.vanyamihova.starter.application;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 
+import javax.inject.Inject;
+
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 import eu.vanyamihova.starter.BuildConfig;
 import eu.vanyamihova.starter.data.datastore.AppDatabaseManager;
 
@@ -11,7 +16,10 @@ import eu.vanyamihova.starter.data.datastore.AppDatabaseManager;
  * Created by Vanya Mihova on 12.01.2018
  */
 
-public final class AndroidApplication extends Application {
+public final class AndroidApplication extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
@@ -26,6 +34,11 @@ public final class AndroidApplication extends Application {
     public void onLowMemory() {
         super.onLowMemory();
         AppDatabaseManager.close();
+    }
+
+    @Override
+    public DispatchingAndroidInjector<Activity> activityInjector() {
+        return activityDispatchingAndroidInjector;
     }
 
     private void setupLeakcanary() {
@@ -45,15 +58,12 @@ public final class AndroidApplication extends Application {
         AppDatabaseManager.create(getApplicationContext());
     }
 
-//    Setup for Dagger 1
-    private static DaggerConfiguration mDaggerConfiguration;
 
     private void setupDagger() {
-        mDaggerConfiguration = new DaggerConfiguration(this);
-    }
-
-    public static void inject(Object object) {
-        mDaggerConfiguration.inject(object);
+        DaggerAppComponent.builder()
+                .application(this)
+                .build()
+                .inject(this);
     }
 
 }

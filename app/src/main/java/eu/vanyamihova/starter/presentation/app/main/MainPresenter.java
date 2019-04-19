@@ -1,4 +1,4 @@
-package eu.vanyamihova.starter.presentation.screen.mainactivity;
+package eu.vanyamihova.starter.presentation.app.main;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import eu.vanyamihova.starter.application.AndroidApplication;
 import eu.vanyamihova.starter.domain.base.interactor.UseCase;
 import eu.vanyamihova.starter.domain.task.Task;
 import eu.vanyamihova.starter.domain.task.usecase.GetTasksUseCase;
@@ -21,15 +20,19 @@ import eu.vanyamihova.starter.presentation.model.task.TaskViewModel;
 
 public final class MainPresenter implements MainContract.Presenter, UseCase.Callback<List<Task>> {
 
+    private GetTasksUseCase getTasksUseCase;
     private MutableLiveData<List<TaskViewModel>> mLiveData;
     private MainContract.View mView;
-    @Inject
-    GetTasksUseCase getTasksUseCase;
 
-    MainPresenter(MainContract.View view) {
-        AndroidApplication.inject(this);
-        this.mView = view;
+    @Inject
+    MainPresenter(GetTasksUseCase getTasksUseCase) {
+        this.getTasksUseCase = getTasksUseCase;
         this.mLiveData = new MutableLiveData<>();
+    }
+
+    @Override
+    public void delegateView(MainContract.View view) {
+        this.mView = view;
     }
 
     @Override

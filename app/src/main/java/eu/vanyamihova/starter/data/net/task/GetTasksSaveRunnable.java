@@ -8,7 +8,7 @@ import eu.vanyamihova.starter.data.executor.priority.Priority;
 import eu.vanyamihova.starter.data.executor.priority.PriorityRunnable;
 
 /**
- * Save {@link GetTasksTO} to the database
+ * Save {@link GetTasksDTO} to the database
  *
  * Created by Vanya Mihova on 19.01.2018
  */
@@ -16,9 +16,9 @@ import eu.vanyamihova.starter.data.executor.priority.PriorityRunnable;
 final class GetTasksSaveRunnable extends PriorityRunnable {
 
     private TaskDao taskDao;
-    private List<GetTasksTO> tos;
+    private List<GetTasksDTO> tos;
 
-    GetTasksSaveRunnable(List<GetTasksTO> tos) {
+    GetTasksSaveRunnable(List<GetTasksDTO> tos) {
         super(Priority.IMMEDIATE);
         this.taskDao = AppDatabaseManager.get().taskDao();
         this.tos = tos;

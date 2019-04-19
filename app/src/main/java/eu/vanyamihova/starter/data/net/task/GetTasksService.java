@@ -8,8 +8,7 @@ import retrofit2.http.GET;
 /**
  * Created by Vanya Mihova on 12.01.2018
  */
-
 public interface GetTasksService {
     @GET("todos")
-    Call<List<GetTasksTO>> getTasks();
+    Call<List<GetTasksDTO>> getTasks();
 }

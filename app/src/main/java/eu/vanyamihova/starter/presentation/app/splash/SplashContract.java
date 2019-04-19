@@ -1,9 +1,10 @@
-package eu.vanyamihova.starter.presentation.screen.splashactivity;
+package eu.vanyamihova.starter.presentation.app.splash;
+
+import androidx.lifecycle.LiveData;
 
 /**
  * Created by Vanya Mihova on 19.01.2018
  */
-
 public interface SplashContract {
 
     interface View {
@@ -11,7 +12,7 @@ public interface SplashContract {
     }
 
     interface Presenter {
-        void load();
+        LiveData<Object> load();
     }
 
 }

@@ -3,7 +3,7 @@ package eu.vanyamihova.starter.presentation.navigator;
 import android.content.Context;
 import android.content.Intent;
 
-import eu.vanyamihova.starter.presentation.screen.mainactivity.MainActivity;
+import eu.vanyamihova.starter.presentation.app.main.MainActivity;
 
 /**
  * Created by Vanya Mihova on 21.01.2018

@@ -1,4 +1,4 @@
-package eu.vanyamihova.starter.presentation.screen.mainactivity;
+package eu.vanyamihova.starter.presentation.app.main;
 
 import androidx.lifecycle.LiveData;
 
@@ -21,6 +21,7 @@ public interface MainContract {
 
     interface Presenter {
         LiveData<List<TaskViewModel>> getTasks();
+        void delegateView(View view);
     }
 
 }

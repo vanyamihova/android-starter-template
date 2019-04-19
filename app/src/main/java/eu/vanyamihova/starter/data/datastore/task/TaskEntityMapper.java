@@ -13,12 +13,12 @@ import eu.vanyamihova.starter.domain.task.Task;
  * Created by Vanya Mihova on 21.01.2018
  */
 
-final class TaskEntityMapper {
+public final class TaskEntityMapper {
 
-    TaskEntityMapper() {
+    public TaskEntityMapper() {
     }
 
-    List<Task> transform(List<TaskEntity> entities) {
+    public List<Task> transform(List<TaskEntity> entities) {
         List<Task> tasks = new ArrayList<>();
 
         if (!ListUtils.isEmpty(entities)) {

@@ -1,4 +1,4 @@
-package eu.vanyamihova.starter.presentation.screen.mainactivity;
+package eu.vanyamihova.starter.presentation.app.main;
 
 import android.view.View;
 import android.widget.TextView;

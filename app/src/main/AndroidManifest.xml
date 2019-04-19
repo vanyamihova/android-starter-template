@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="eu.vanyamihova.starter.presentation.screen.splashactivity.SplashActivity">
+        <activity android:name="eu.vanyamihova.starter.presentation.app.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="eu.vanyamihova.starter.presentation.screen.mainactivity.MainActivity" />
+        <activity android:name="eu.vanyamihova.starter.presentation.app.main.MainActivity" />
 
     </application>
 

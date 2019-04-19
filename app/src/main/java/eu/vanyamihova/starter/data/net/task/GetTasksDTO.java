@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by Vanya Mihova on 12.01.2018
  */
 
-public final class GetTasksTO implements Serializable {
+public final class GetTasksDTO implements Serializable {
 
     @SerializedName("id") private int id;
     @SerializedName("userId") private int userId;

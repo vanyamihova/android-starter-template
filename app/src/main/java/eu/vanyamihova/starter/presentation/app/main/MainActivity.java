@@ -1,11 +1,11 @@
-package eu.vanyamihova.starter.presentation.screen.mainactivity;
+package eu.vanyamihova.starter.presentation.app.main;
 
-import android.os.Bundle;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import eu.vanyamihova.starter.R;
@@ -15,9 +15,12 @@ import eu.vanyamihova.starter.presentation.model.task.TaskViewModel;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
-    private TaskAdapter mAdapter;
+    @Inject
+    MainContract.Presenter mainPresenter;
 
-    @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+    private TaskAdapter mAdapter;
 
     @Override
     public int injectLayout() {
@@ -25,16 +28,15 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected void onCreateView() {
         mAdapter = new TaskAdapter();
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
 
-        new MainPresenter(this).getTasks().observe(this, taskViewModels -> {
+        mainPresenter.delegateView(this);
+        mainPresenter.getTasks().observe(this, taskViewModels -> {
             showTasks(taskViewModels);
             hideLoadingIndicator();
         });
