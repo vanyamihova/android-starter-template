@@ -1,4 +1,4 @@
-package eu.vanyamihova.starter.domain;
+package eu.vanyamihova.starter.data.repository;
 
 import dagger.Binds;
 import dagger.Module;
