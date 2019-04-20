@@ -31,7 +31,7 @@ belongs from the **data-layer**.
 
 ## Libraries included
 
- - [Android Support Library] for backwards compatibility
+ - [Android X] for backwards compatibility
  - [Butterknife] for view injection
  - [Retrofit] for network code.
  - [Room] for managing local database.
@@ -43,7 +43,7 @@ belongs from the **data-layer**.
  - [JUnit] and [Mockito] for testing. // TODO:
 
 
-[Android Support Library]: <https://developer.android.com/tools/support-library/index.html>
+[Android X]: <https://developer.android.com/jetpack/androidx>
 [Butterknife]: <https://github.com/JakeWharton/butterknife>
 [Retrofit]: <https://square.github.io/retrofit/>
 [Room]: <https://developer.android.com/topic/libraries/architecture/room.html>
