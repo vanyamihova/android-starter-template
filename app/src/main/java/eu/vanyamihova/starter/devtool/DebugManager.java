@@ -1,16 +1,18 @@
 package eu.vanyamihova.starter.devtool;
 
-import java.util.logging.ErrorManager;
+import android.util.Log;
 
 import eu.vanyamihova.starter.BuildConfig;
 
 
 /**
  * Keep logic for debug purposes
- *
+ * <p>
  * Created by Vanya Mihova on 02.02.17.
  */
 public class DebugManager {
+
+    private static final String TAG = "DEBUG_MANAGER";
 
     public static void log(String message) {
         log(message, null);
@@ -28,8 +30,11 @@ public class DebugManager {
     }
 
     private void logGenericFailure(String message, Exception e) {
-        ErrorManager em = new ErrorManager();
-        em.error(message, e, ErrorManager.GENERIC_FAILURE);
+        if (e == null) {
+            Log.d(TAG, message);
+            return;
+        }
+        Log.e(TAG, message, e);
     }
 
 }

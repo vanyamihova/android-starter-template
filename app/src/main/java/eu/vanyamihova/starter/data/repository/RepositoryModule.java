@@ -2,8 +2,7 @@ package eu.vanyamihova.starter.data.repository;
 
 import dagger.Binds;
 import dagger.Module;
-import eu.vanyamihova.starter.data.repository.SyncRepositoryImpl;
-import eu.vanyamihova.starter.data.repository.TaskRepositoryImpl;
+import eu.vanyamihova.starter.data.repository.synchronization.SyncRepositoryImpl;
 import eu.vanyamihova.starter.domain.sync.SyncRepository;
 import eu.vanyamihova.starter.domain.task.TaskRepository;
 

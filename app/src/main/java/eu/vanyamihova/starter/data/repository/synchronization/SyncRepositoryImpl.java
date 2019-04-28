@@ -1,11 +1,14 @@
-package eu.vanyamihova.starter.data.repository;
+package eu.vanyamihova.starter.data.repository.synchronization;
 
 import javax.inject.Inject;
 
 import eu.vanyamihova.starter.data.exception.NetworkConnectionException;
 import eu.vanyamihova.starter.data.net.QueryExecutor;
 import eu.vanyamihova.starter.data.net.task.GetTasksQuery;
+import eu.vanyamihova.starter.data.net.task.GetTasksResponse;
+import eu.vanyamihova.starter.devtool.DebugManager;
 import eu.vanyamihova.starter.domain.sync.SyncRepository;
+import io.reactivex.Observable;
 
 /**
  * Call the queries from the cloud database to save all needed data to the local database.
@@ -16,19 +19,22 @@ import eu.vanyamihova.starter.domain.sync.SyncRepository;
 public final class SyncRepositoryImpl implements SyncRepository {
 
     private QueryExecutor queryExecutor;
+    private GetTasksQuery getTasksQuery;
 
     @Inject
     public SyncRepositoryImpl(QueryExecutor queryExecutor) {
         this.queryExecutor = queryExecutor;
+        this.getTasksQuery = new GetTasksQuery();
     }
 
     @Override
-    public void getTasks(CompleteListener listener) {
+    public Observable<GetTasksResponse> getTasks() {
+        DebugManager.log("Start syncing tasks");
         try {
-            GetTasksQuery query = new GetTasksQuery(listener::onComplete);
-            queryExecutor.execute(query);
+            return queryExecutor.execute(getTasksQuery);
         } catch (NetworkConnectionException networkException) {
-            listener.onComplete();
+            DebugManager.log("Returns empty observable: No Internet connection");
+            return Observable.empty();
         }
     }
 

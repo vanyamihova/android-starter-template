@@ -1,20 +1,16 @@
 package eu.vanyamihova.starter.domain.sync;
 
+import eu.vanyamihova.starter.data.net.task.GetTasksResponse;
+import io.reactivex.Observable;
+
 /**
  * Interface that represents a Repository for getting different data from REST APIs.
- *
+ * <p>
  * Created by Vanya Mihova on 21.01.2018
  */
 
 public interface SyncRepository {
 
-    /**
-     * Pass a {@link CompleteListener} which will process the result onComplete()
-     */
-    void getTasks(CompleteListener listener);
-
-    interface CompleteListener {
-        void onComplete();
-    }
+    Observable<GetTasksResponse> getTasks();
 
 }

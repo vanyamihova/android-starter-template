@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import eu.vanyamihova.starter.data.exception.NetworkConnectionException;
 import eu.vanyamihova.starter.data.net.base.BaseQuery;
+import io.reactivex.Observable;
 
 /**
  * Executor that checks for available network connection,
@@ -20,13 +21,13 @@ public class QueryExecutor {
     @Inject
     public QueryExecutor(NetworkUtils networkUtils) {
         this.networkUtils = networkUtils;
-        this.retrofitBuilder = new RetrofitBuilder();
+
     }
 
     /**
      * Check for the network connection and if there is no, throw {@link NetworkConnectionException}
      */
-    public <S> void execute(BaseQuery query) throws NetworkConnectionException {
+    public <S, R> Observable<R> execute(BaseQuery<S, R> query) throws NetworkConnectionException {
         // Check the internet connection
         if (!networkUtils.isConnected()) {
             throw new NetworkConnectionException();
@@ -34,11 +35,12 @@ public class QueryExecutor {
 
         Class<S> clazz = query.getServiceClass();
 
+        this.retrofitBuilder = new RetrofitBuilder();
         S service = retrofitBuilder
                 .build(query.getUrl())
                 .create(clazz);
 
-        query.makeQueryFrom(service);
+        return query.makeQueryFrom(service);
     }
 
 }

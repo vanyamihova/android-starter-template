@@ -1,5 +1,7 @@
 package eu.vanyamihova.starter.presentation.app.splash;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import javax.inject.Inject;
 
 import eu.vanyamihova.starter.R;
@@ -12,7 +14,7 @@ import eu.vanyamihova.starter.presentation.base.BaseActivity;
 public final class SplashActivity extends BaseActivity implements SplashContract.View {
 
     @Inject
-    SplashContract.Presenter splashPresenter;
+    SplashContract.Presenter presenter;
 
     @Override
     public int injectLayout() {
@@ -21,12 +23,28 @@ public final class SplashActivity extends BaseActivity implements SplashContract
 
     @Override
     protected void onCreateView() {
-        splashPresenter.load()
-                .observe(this, o -> finishLoading());
     }
 
     @Override
-    public void finishLoading() {
+    protected void onResume() {
+        super.onResume();
+        presenter.delegateView(this);
+        presenter.loadData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.destroy();
+    }
+
+    @Override
+    public LifecycleOwner getLifecycleOwner() {
+        return this;
+    }
+
+    @Override
+    public void openApplicationContent() {
         navigator.navigateToMainView(this);
     }
 

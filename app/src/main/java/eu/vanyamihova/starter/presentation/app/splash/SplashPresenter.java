@@ -2,28 +2,36 @@ package eu.vanyamihova.starter.presentation.app.splash;
 
 import javax.inject.Inject;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import eu.vanyamihova.starter.domain.usecase.sync.SyncUseCase;
-
 /**
  * Created by Vanya Mihova on 19.01.2018
  */
 
 public final class SplashPresenter implements SplashContract.Presenter {
 
-    private SyncUseCase syncUseCase;
-    private MutableLiveData<Object> livaData;
+    private SplashContract.View view;
+    private SplashContract.Model model;
 
     @Inject
-    SplashPresenter(SyncUseCase syncUseCase) {
-        this.syncUseCase = syncUseCase;
-        this.livaData = new MutableLiveData<>();
+    public SplashPresenter(SplashContract.Model model) {
+        this.model = model;
     }
 
     @Override
-    public LiveData<Object> load() {
-        syncUseCase.sync(() -> livaData.postValue(true));
-        return livaData;
+    public void delegateView(SplashContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void loadData() {
+        if (view == null) {
+            return;
+        }
+        model.fetchData()
+                .observe(view.getLifecycleOwner(), o -> view.openApplicationContent());
+    }
+
+    @Override
+    public void destroy() {
+        model.clear();
     }
 }

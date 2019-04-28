@@ -2,7 +2,9 @@ package eu.vanyamihova.starter.domain.usecase.sync;
 
 import javax.inject.Inject;
 
+import eu.vanyamihova.starter.data.net.task.GetTasksResponse;
 import eu.vanyamihova.starter.domain.sync.SyncRepository;
+import io.reactivex.Observable;
 
 /**
  * @author Vanya Mihova <vanya.mihova89@gmail.com>
@@ -18,7 +20,7 @@ public class SyncUseCaseImpl implements SyncUseCase {
     }
 
     @Override
-    public void sync(SyncCallback callback) {
-        syncRepository.getTasks(callback::onComplete);
+    public Observable<GetTasksResponse> sync() {
+        return syncRepository.getTasks();
     }
 }

@@ -1,5 +1,6 @@
 package eu.vanyamihova.starter.presentation.app.splash;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 /**
@@ -8,11 +9,23 @@ import androidx.lifecycle.LiveData;
 public interface SplashContract {
 
     interface View {
-        void finishLoading();
+        void openApplicationContent();
+
+        LifecycleOwner getLifecycleOwner();
     }
 
     interface Presenter {
-        LiveData<Object> load();
+        void delegateView(View view);
+
+        void loadData();
+
+        void destroy();
+    }
+
+    interface Model {
+        LiveData<Object> fetchData();
+
+        void clear();
     }
 
 }

@@ -4,6 +4,7 @@ import eu.vanyamihova.starter.BuildConfig;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -29,6 +30,7 @@ final class RetrofitBuilder {
         return new Retrofit.Builder()
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
+                //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
@@ -36,7 +38,7 @@ final class RetrofitBuilder {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
         logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);

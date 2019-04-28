@@ -1,7 +1,5 @@
 package eu.vanyamihova.starter.data.net.task;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,5 +8,5 @@ import retrofit2.http.GET;
  */
 public interface GetTasksService {
     @GET("todos")
-    Call<List<GetTasksDTO>> getTasks();
+    Call<GetTasksResponse> getTasks();
 }

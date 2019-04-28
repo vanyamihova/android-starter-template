@@ -1,33 +1,29 @@
 package eu.vanyamihova.starter.data.net.task;
 
-import java.util.List;
-
 import eu.vanyamihova.starter.data.datastore.AppDatabaseManager;
 import eu.vanyamihova.starter.data.datastore.task.TaskDao;
-import eu.vanyamihova.starter.data.executor.priority.Priority;
-import eu.vanyamihova.starter.data.executor.priority.PriorityRunnable;
+import eu.vanyamihova.starter.data.net.mapper.GetTasksDTOMapper;
+import eu.vanyamihova.starter.devtool.DebugManager;
 
 /**
  * Save {@link GetTasksDTO} to the database
- *
+ * <p>
  * Created by Vanya Mihova on 19.01.2018
  */
 
-final class GetTasksSaveRunnable extends PriorityRunnable {
+final class GetTasksSaveRunnable {
 
     private TaskDao taskDao;
-    private List<GetTasksDTO> tos;
+    private GetTasksDTOMapper mapper;
 
-    GetTasksSaveRunnable(List<GetTasksDTO> tos) {
-        super(Priority.IMMEDIATE);
+    GetTasksSaveRunnable() {
         this.taskDao = AppDatabaseManager.get().taskDao();
-        this.tos = tos;
+        this.mapper = new GetTasksDTOMapper();
     }
 
-    @Override
-    public void run() {
-        GetTasksTOMapper mapper = new GetTasksTOMapper();
-        taskDao.insertAll(mapper.transform(tos));
+    void run(GetTasksResponse response) {
+        DebugManager.log("Insert all data from Get Tasks Response");
+        taskDao.insertAll(mapper.transform(response));
     }
 
 }

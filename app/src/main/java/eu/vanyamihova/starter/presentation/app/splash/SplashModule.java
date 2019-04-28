@@ -12,6 +12,10 @@ public abstract class SplashModule {
 
     @SplashActivityScope
     @Binds
-    abstract SplashContract.Presenter provideSplashContractPresenter(SplashPresenter splashPresenter);
+    abstract SplashContract.Presenter bindSplashContractPresenter(SplashPresenter splashPresenter);
+
+    @SplashActivityScope
+    @Binds
+    abstract SplashContract.Model bindSplashContractModel(SplashModel splashModel);
 
 }

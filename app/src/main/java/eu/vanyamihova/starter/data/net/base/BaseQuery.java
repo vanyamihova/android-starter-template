@@ -1,18 +1,18 @@
 package eu.vanyamihova.starter.data.net.base;
 
+import io.reactivex.Observable;
+
 /**
  * Parent of queries.
  * <p>
  * Created by Vanya Mihova 12.01.2018
  */
-public abstract class BaseQuery<S, L extends BaseQueryCompleteListener> {
+public abstract class BaseQuery<S, R> {
 
-    protected L mListener;
     private String mBaseUrl;
 
-    protected BaseQuery(String baseUrl, L listener) {
+    protected BaseQuery(String baseUrl) {
         this.mBaseUrl = baseUrl;
-        this.mListener = listener;
     }
 
     public abstract Class<S> getServiceClass();
@@ -21,6 +21,6 @@ public abstract class BaseQuery<S, L extends BaseQueryCompleteListener> {
         return mBaseUrl;
     }
 
-    public abstract void makeQueryFrom(S service);
+    public abstract Observable<R> makeQueryFrom(S service);
 
 }

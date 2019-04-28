@@ -1,8 +1,8 @@
 package eu.vanyamihova.starter;
 
 import org.junit.Before;
+import org.junit.Test;
 
-import eu.vanyamihova.starter.domain.usecase.sync.SyncUseCase;
 import eu.vanyamihova.starter.presentation.app.splash.SplashContract;
 import eu.vanyamihova.starter.presentation.app.splash.SplashPresenter;
 
@@ -14,16 +14,22 @@ import static org.mockito.Mockito.mock;
  */
 public class SplashPresenterTest {
 
+    private SplashContract.Model mockModel;
     private SplashContract.View mockView;
     private SplashPresenter presenter;
-    private SyncUseCase syncUseCase;
 
     @Before
     public void setup() {
         mockView = mock(SplashContract.View.class);
-        syncUseCase = mock(SyncUseCase.class);
+        mockModel = mock(SplashContract.Model.class);
 
-        presenter = new SplashPresenter(syncUseCase);
+        presenter = new SplashPresenter(mockModel);
+        presenter.delegateView(mockView);
+    }
+
+    @Test
+    public void loadDataFromUseCase() {
+        //
     }
 
 }
